@@ -1,17 +1,18 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "itox-gmbh/laravel-security",
+    "description": "Laravel security hardening package",
     "keywords": [
-        ":vendor_name",
+        "IToX GmbH",
         "laravel",
-        ":package_slug"
+        "laravel-security",
+        "security"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/itox-gmbh/laravel-security",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Markus Waurig",
+            "email": "mwaurig@itox.io",
             "role": "Developer"
         }
     ],
@@ -35,13 +36,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "IToXGmbH\\LaravelSecurity\\": "src/",
+            "IToXGmbH\\LaravelSecurity\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "IToXGmbH\\LaravelSecurity\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +64,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "IToXGmbH\\LaravelSecurity\\LaravelSecurityServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelSecurity": "IToXGmbH\\LaravelSecurity\\Facades\\LaravelSecurity"
             }
         }
     },
