@@ -2,15 +2,12 @@
 
 namespace IToXGmbH\LaravelSecurity\Tests;
 
-use IToXGmbH\LaravelSecurity\LaravelSecurity;
 use PHPUnit\Framework\TestCase;
 
 class LaravelSecurityTest extends TestCase
 {
-
-    public function testRegisterMiddleware()
+    public function test_register_middleware()
     {
         $this->assertIsArray([]);
     }
-
 }

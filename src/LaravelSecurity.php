@@ -8,19 +8,16 @@ use IToXGmbH\LaravelSecurity\Http\Middleware\XFrameOptionsMiddleware;
 
 class LaravelSecurity
 {
-
     private array $middleware = [
         ContentTypeMiddleware::class,
         StrictTransportSecurityMiddleware::class,
         XFrameOptionsMiddleware::class,
     ];
 
-
     public function registerMiddleware(): array
     {
         return $this->middleware;
     }
-
 
     public function getSecurityText(): string
     {
@@ -31,7 +28,5 @@ Preferred-Languages: en, fr, de
 Canonical: https://securitytxt.org/.well-known/security.txt
 Policy: https://hackerone.com/ed?type=team&view_policy=true';
 
-
     }
-
 }

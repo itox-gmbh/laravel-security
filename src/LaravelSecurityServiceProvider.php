@@ -6,8 +6,6 @@ use IToXGmbH\LaravelSecurity\Commands\LaravelSecurityCommand;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelPackageTools\Commands\Concerns;
-
 
 class LaravelSecurityServiceProvider extends PackageServiceProvider
 {
@@ -23,13 +21,13 @@ class LaravelSecurityServiceProvider extends PackageServiceProvider
             ->hasConfigFile(['security'])
             ->hasRoute('web')
 //            ->hasCommand(LaravelSecurityCommand::class)
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
-                    ->endWith(function(InstallCommand $command) {
+                    ->endWith(function (InstallCommand $command) {
                         $command->info('Have a great day!');
                     });
             });
-//            ->hasCommand(LaravelSecurityCommand::class);
+        //            ->hasCommand(LaravelSecurityCommand::class);
     }
 }

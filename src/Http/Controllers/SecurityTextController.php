@@ -6,7 +6,6 @@ use IToXGmbH\LaravelSecurity\Facades\LaravelSecurity;
 
 class SecurityTextController
 {
-
     public function __invoke()
     {
         return response(LaravelSecurity::getSecurityText(), 200)
