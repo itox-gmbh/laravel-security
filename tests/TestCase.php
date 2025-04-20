@@ -3,8 +3,8 @@
 namespace IToXGmbH\LaravelSecurity\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use IToXGmbH\LaravelSecurity\LaravelSecurityServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

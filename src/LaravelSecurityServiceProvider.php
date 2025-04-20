@@ -2,9 +2,9 @@
 
 namespace IToXGmbH\LaravelSecurity;
 
+use IToXGmbH\LaravelSecurity\Commands\LaravelSecurityCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use IToXGmbH\LaravelSecurity\Commands\LaravelSecurityCommand;
 
 class LaravelSecurityServiceProvider extends PackageServiceProvider
 {
