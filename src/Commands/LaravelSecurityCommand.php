@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class LaravelSecurityCommand extends Command
 {
-    public $signature = 'laravel-security';
+    public $signature = 'itox:laravel-security';
 
     public $description = 'My command';
 

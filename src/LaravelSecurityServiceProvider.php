@@ -3,8 +3,11 @@
 namespace IToXGmbH\LaravelSecurity;
 
 use IToXGmbH\LaravelSecurity\Commands\LaravelSecurityCommand;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Spatie\LaravelPackageTools\Commands\Concerns;
+
 
 class LaravelSecurityServiceProvider extends PackageServiceProvider
 {
@@ -17,9 +20,16 @@ class LaravelSecurityServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-security')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_security_table')
-            ->hasCommand(LaravelSecurityCommand::class);
+            ->hasConfigFile(['security'])
+            ->hasRoute('web')
+//            ->hasCommand(LaravelSecurityCommand::class)
+            ->hasInstallCommand(function(InstallCommand $command) {
+                $command
+                    ->publishConfigFile()
+                    ->endWith(function(InstallCommand $command) {
+                        $command->info('Have a great day!');
+                    });
+            });
+//            ->hasCommand(LaravelSecurityCommand::class);
     }
 }

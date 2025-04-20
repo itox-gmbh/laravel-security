@@ -1,6 +1,5 @@
 <?php
 
-// config for IToXGmbH/LaravelSecurity
 return [
-
+    'key' => config('SECURITY_KEY', 'default'),
 ];
