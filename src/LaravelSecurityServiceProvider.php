@@ -2,10 +2,13 @@
 
 namespace IToXGmbH\LaravelSecurity;
 
-use IToXGmbH\LaravelSecurity\Commands\LaravelSecurityCommand;
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Support\Facades\URL;
+use IToXGmbH\LaravelSecurity\Http\Middleware\SecurityMiddleware;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use IToXGmbH\LaravelSecurity\Facades\LaravelSecurity;
 
 class LaravelSecurityServiceProvider extends PackageServiceProvider
 {
@@ -25,9 +28,39 @@ class LaravelSecurityServiceProvider extends PackageServiceProvider
                 $command
                     ->publishConfigFile()
                     ->endWith(function (InstallCommand $command) {
-                        $command->info('Have a great day!');
+                        $command->info('Congratulations! You made the web a little bit more secure.');
                     });
             });
         //            ->hasCommand(LaravelSecurityCommand::class);
+    }
+
+    public function register(): void
+    {
+        parent::register();
+
+        $this->app->singleton('LaravelSecurity', function () {
+            return new \IToXGmbH\LaravelSecurity\LaravelSecurity();
+        });
+    }
+
+    public function boot(): void
+    {
+        parent::boot();
+
+        $kernel = $this->app->make(Kernel::class);
+        $kernel->pushMiddleware(SecurityMiddleware::class);
+
+        $this->configureSecureUrls();
+    }
+
+    protected function configureSecureUrls() :void
+    {
+        if(!LaravelSecurity::isSSLEnforced()){
+            return;
+        }
+
+        URL::forceHttps(true);
+
+        $this->app['request']->server->set('HTTPS', 'on');
     }
 }

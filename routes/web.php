@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use IToXGmbH\LaravelSecurity\Facades\LaravelSecurity;
 use IToXGmbH\LaravelSecurity\Http\Controllers\SecurityTextController;
 
-Route::get('.well-known/security.txt', SecurityTextController::class);
+if (LaravelSecurity::hasSecurityPolicy()) {
+    Route::get(LaravelSecurity::getSecurityTextUrl(), SecurityTextController::class);
+}

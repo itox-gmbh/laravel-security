@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 
-class ContentTypeMiddleware
+class PermissionPolicyMiddleware
 {
     /**
      * Handle an incoming request.
@@ -20,8 +20,8 @@ class ContentTypeMiddleware
 
         if (! App::environment('local')) {
             $response->headers->set(
-                'X-Content-Type-Options',
-                'nosniff',
+                'Permissions-Policy',
+                'camera=(), microphone=(), geolocation=(), fullscreen=(self), payment=(), accelerometer=(), gyroscope=()',
                 true
             );
         }
