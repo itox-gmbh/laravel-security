@@ -14,7 +14,7 @@ return [
     // leave the policy empty if you don't want to use it'
     'policy' => [
         // if you not want wo publish an mail address, you can enter a url to a contact form
-        'contact' => "mailto:security@xyz.com",
+        'contact' => 'mailto:security@xyz.com',
         'languages' => ['en'],
     ],
 ];

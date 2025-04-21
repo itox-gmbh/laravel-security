@@ -4,11 +4,11 @@ namespace IToXGmbH\LaravelSecurity;
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\URL;
+use IToXGmbH\LaravelSecurity\Facades\LaravelSecurity;
 use IToXGmbH\LaravelSecurity\Http\Middleware\SecurityMiddleware;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use IToXGmbH\LaravelSecurity\Facades\LaravelSecurity;
 
 class LaravelSecurityServiceProvider extends PackageServiceProvider
 {
@@ -39,7 +39,7 @@ class LaravelSecurityServiceProvider extends PackageServiceProvider
         parent::register();
 
         $this->app->singleton('LaravelSecurity', function () {
-            return new \IToXGmbH\LaravelSecurity\LaravelSecurity();
+            return new \IToXGmbH\LaravelSecurity\LaravelSecurity;
         });
     }
 
@@ -53,9 +53,9 @@ class LaravelSecurityServiceProvider extends PackageServiceProvider
         $this->configureSecureUrls();
     }
 
-    protected function configureSecureUrls() :void
+    protected function configureSecureUrls(): void
     {
-        if(!LaravelSecurity::isSSLEnforced()){
+        if (! LaravelSecurity::isSSLEnforced()) {
             return;
         }
 
