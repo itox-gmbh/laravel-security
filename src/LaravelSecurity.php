@@ -8,21 +8,16 @@ class LaravelSecurity
 {
     private array $headers = [];
 
-    public function __construct()
-    {
-    }
-
+    public function __construct() {}
 
     /**
      * determines if SSL should be enforced
-     *
-     * @return bool
      */
     public function isSSLEnforced(): bool
     {
         $config = config('security.enforceSSL', true);
 
-        if ($config && App::environment(['production', 'staging']) && !App::runningUnitTests()) {
+        if ($config && App::environment(['production', 'staging']) && ! App::runningUnitTests()) {
             return true;
         }
 
@@ -34,11 +29,8 @@ class LaravelSecurity
         return '/.well-known/security.txt';
     }
 
-
     /**
      * determines if a security policy is set
-     *
-     * @return bool
      */
     public function hasSecurityPolicy(): bool
     {
@@ -48,7 +40,6 @@ class LaravelSecurity
 
         return true;
     }
-
 
     public function getHeaders(): array
     {
@@ -60,23 +51,23 @@ class LaravelSecurity
             }
         }
 
-        if(config('security.headers.x-frame-options', true)){
+        if (config('security.headers.x-frame-options', true)) {
             $this->headers['X-Frame-Options'] = config('security.headers.x-frame-options', 'SAMEORIGIN');
         }
 
-        if(config('security.headers.x-content-type-options', true)){
+        if (config('security.headers.x-content-type-options', true)) {
             $this->headers['X-Content-Type-Options'] = config('security.headers.x-content-type-options', 'nosniff');
         }
 
-        if(config('security.headers.x-xss-protection', true)){
+        if (config('security.headers.x-xss-protection', true)) {
             $this->headers['X-XSS-Protection'] = config('security.headers.x-xss-protection', '1; mode=block');
         }
 
-        if(config('security.headers.permissions-policy', true)){
+        if (config('security.headers.permissions-policy', true)) {
             $this->headers['Permissions-Policy'] = config('security.headers.permissions-policy', 'camera=(), microphone=(), geolocation=(), fullscreen=(self), payment=(), accelerometer=(), gyroscope=()');
         }
 
-        if(config('security.headers.feature-policy', true)){
+        if (config('security.headers.feature-policy', true)) {
             $this->headers['Feature-Policy'] = config('security.headers.feature-policy', "camera 'none'; microphone 'none'; geolocation 'none'; fullscreen 'none'; payment 'none'; accelerometer 'none'; gyroscope 'none';");
         }
 
@@ -91,16 +82,13 @@ class LaravelSecurity
         ];
     }
 
-
     public function getSecurityText(): string
     {
-        return 'Contact: ' . config('security.policy.contact') . '
+        return 'Contact: '.config('security.policy.contact').'
 Expires: 2026-03-27T00:00:00.000Z
 Acknowledgments: https://hackerone.com/ed/thanks
 Preferred-Languages: de
-Canonical: ' . config("app.url") . $this->getSecurityTextUrl() . '
+Canonical: '.config('app.url').$this->getSecurityTextUrl().'
 Policy: https://hackerone.com/ed?type=team&view_policy=true';
     }
-
-
 }
