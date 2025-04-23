@@ -13,7 +13,7 @@ return [
             'embedder-policy' => 'require-corp',
             'resource-policy' => 'same-origin',
             'opener-policy' => 'same-origin',
-        ]
+        ],
     ],
 
     // leave the policy empty if you don't want to use it'
