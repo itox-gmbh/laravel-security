@@ -47,7 +47,7 @@ class LaravelSecurity
             $this->headers['Content-Security-Policy'] = 'upgrade-insecure-requests';
 
             if (config('security.headers.hsts', true)) {
-                $this->headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubdomains';
+                $this->headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains; preload';
             }
         }
 
@@ -69,6 +69,18 @@ class LaravelSecurity
 
         if (config('security.headers.feature-policy', true)) {
             $this->headers['Feature-Policy'] = config('security.headers.feature-policy', "camera 'none'; microphone 'none'; geolocation 'none'; fullscreen 'none'; payment 'none'; accelerometer 'none'; gyroscope 'none';");
+        }
+
+        if (config('security.headers.cross-origin.embedder-policy', true)) {
+            $this->headers['Feature-Policy'] = config('security.headers.cross-origin.embedder-policy', 'require-corp');
+        }
+
+        if (config('security.headers.cross-origin.resource-policy', true)) {
+            $this->headers['Feature-Policy'] = config('security.headers.cross-origin.resource-policy', 'same-origin');
+        }
+
+        if (config('security.headers.cross-origin.opener-policy', true)) {
+            $this->headers['Feature-Policy'] = config('security.headers.cross-origin.opener-policy', 'same-origin');
         }
 
         return $this->headers;

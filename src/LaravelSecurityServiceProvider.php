@@ -53,6 +53,9 @@ class LaravelSecurityServiceProvider extends PackageServiceProvider
         $this->configureSecureUrls();
     }
 
+    /**
+     * Configure the secure URLs.
+     */
     protected function configureSecureUrls(): void
     {
         if (! LaravelSecurity::isSSLEnforced()) {
