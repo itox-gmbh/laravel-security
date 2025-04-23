@@ -72,15 +72,15 @@ class LaravelSecurity
         }
 
         if (config('security.headers.cross-origin.embedder-policy', true)) {
-            $this->headers['Feature-Policy'] = config('security.headers.cross-origin.embedder-policy', 'require-corp');
+            $this->headers['Cross-Origin-Embedder-Policy'] = config('security.headers.cross-origin.embedder-policy', 'require-corp');
         }
 
         if (config('security.headers.cross-origin.resource-policy', true)) {
-            $this->headers['Feature-Policy'] = config('security.headers.cross-origin.resource-policy', 'same-origin');
+            $this->headers['Cross-Origin-Resource-Policy'] = config('security.headers.cross-origin.resource-policy', 'same-origin');
         }
 
         if (config('security.headers.cross-origin.opener-policy', true)) {
-            $this->headers['Feature-Policy'] = config('security.headers.cross-origin.opener-policy', 'same-origin');
+            $this->headers['Cross-Origin-Opener-Policy'] = config('security.headers.cross-origin.opener-policy', 'same-origin');
         }
 
         return $this->headers;
