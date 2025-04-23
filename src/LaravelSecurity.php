@@ -47,7 +47,7 @@ class LaravelSecurity
             $this->headers['Content-Security-Policy'] = 'upgrade-insecure-requests';
 
             if (config('security.headers.hsts', true)) {
-                $this->headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubdomains';
+                $this->headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains; preload';
             }
         }
 
