@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-security` will be documented in this file.
 
+## 0.0.2 - 2025-04-23
+
+### What's Changed
+
+* HSTS change, cross-origin support
+
+### New Contributors
+
+* @mwaurig made their first contribution in https://github.com/itox-gmbh/laravel-security/pull/1
+
+**Full Changelog**: https://github.com/itox-gmbh/laravel-security/compare/0.0.1...0.0.2
+
 ## v.0.0.2 - 2025-04-23
 
 ### What's Changed
